@@ -25,7 +25,7 @@ const helmetMiddleware = [
   noCache(),
   contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self"],
+      defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "trusted-cdn.com"],
     },
   }),
