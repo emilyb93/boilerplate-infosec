@@ -10,6 +10,7 @@ const {
   hsts,
   dnsPrefetchControl,
   noCache,
+  contentSecurityPolicy,
 } = require("helmet");
 
 const ninetyDaysInSeconds = 60 * 60 * 24 * 90;
@@ -22,6 +23,12 @@ const helmetMiddleware = [
   hsts({ maxAge: ninetyDaysInSeconds, force: true }),
   dnsPrefetchControl(),
   noCache(),
+  contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self"],
+      scriptSrc: ["'self'", "trusted-cdn.com"],
+    },
+  }),
 ];
 app.use(...helmetMiddleware);
 //
