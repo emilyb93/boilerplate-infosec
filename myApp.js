@@ -7,16 +7,19 @@ const {
   xssFilter,
   noSniff,
   ieNoOpen,
+  hsts,
 } = require("helmet");
+
+const ninetyDaysInSeconds = 60 * 60 * 24 * 90;
 const helmetMiddleware = [
   hidePoweredBy(),
-  frameguard(),
+  frameguard({ action: "deny" }),
   xssFilter(),
   noSniff(),
   ieNoOpen(),
+  hsts({ maxAge: ninetyDaysInSeconds, force: true }),
 ];
 app.use(...helmetMiddleware);
-
 //
 
 module.exports = app;
