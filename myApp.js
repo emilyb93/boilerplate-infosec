@@ -9,11 +9,11 @@ const {
   ieNoOpen,
 } = require("helmet");
 const helmetMiddleware = [
-  hidePoweredBy,
-  frameguard,
-  xssFilter,
-  noSniff,
-  ieNoOpen,
+  hidePoweredBy(),
+  frameguard(),
+  xssFilter(),
+  noSniff(),
+  ieNoOpen(),
 ];
 app.use(...helmetMiddleware);
 
