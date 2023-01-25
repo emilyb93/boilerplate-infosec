@@ -8,6 +8,7 @@ const {
   noSniff,
   ieNoOpen,
   hsts,
+  dnsPrefetchControl,
 } = require("helmet");
 
 const ninetyDaysInSeconds = 60 * 60 * 24 * 90;
@@ -18,6 +19,7 @@ const helmetMiddleware = [
   noSniff(),
   ieNoOpen(),
   hsts({ maxAge: ninetyDaysInSeconds, force: true }),
+  dnsPrefetchControl(),
 ];
 app.use(...helmetMiddleware);
 //
